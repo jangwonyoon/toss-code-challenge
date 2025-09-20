@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 접근성을 위한 커스텀 스타일 */
+@layer base {
+  /* 포커스 스타일 개선 */
+  *:focus {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+  }
+
+  /* 버튼 기본 스타일 */
+  button:focus {
+    @apply ring-2 ring-blue-500 ring-offset-2;
+  }
+
+  /* prefers-reduced-motion 지원 */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* 모달 오버레이 애니메이션 */
+  .modal-overlay {
+    @apply animate-fade-in;
+  }
+
+  /* 모달 컨텐츠 애니메이션 */
+  .modal-content {
+    @apply animate-scale-in;
+  }
+
+  /* 기본 버튼 스타일 */
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500;
+  }
+}
