@@ -8,11 +8,12 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["src/**", "!dist", "!node_modules"]
+    "includes": ["src/**/*.{js,ts,jsx,tsx}", "!dist", "!node_modules"]
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "space"
+    "indentStyle": "space",
+    "indentWidth": 2
   },
   "linter": {
     "enabled": true,
@@ -22,7 +23,9 @@
   },
   "javascript": {
     "formatter": {
-      "quoteStyle": "single"
+      "quoteStyle": "single",
+      "semicolons": "always",
+      "trailingCommas": "es5"
     }
   }
 }

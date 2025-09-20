@@ -5,17 +5,25 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "check": "biome check"
+    "check": "biome check",
+    "format": "biome format --write"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "modern-normalize": "^3.0.1",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-hook-form": "^7.63.0",
+    "tailwind-variants": "^1.0.0",
+    "zod": "^4.1.9"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.2",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
     "typescript": "~5.8.3",
     "vite": "^7.1.2"
   }
