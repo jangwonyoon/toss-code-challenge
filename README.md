@@ -1,52 +1,105 @@
-## 📋 챌린지 개요
+# 🚀 접근성 친화적 모달 폼
 
----
+React와 TypeScript를 사용하여 **선언적 API**를 지원하는 접근성 친화적 모달폼 컴포넌트입니다.
 
-React와 TypeScript를 사용하여 접근성을 지원하는 모달폼 컴포넌트를 구현하는 챌린지입니다.
+## ✨ 주요 특징
 
-![접근성 모달폼](preview.gif)
+### 📋 선언적 API
+```typescript
+const result = await openFormModal();
+if (result) {
+  console.log('제출된 데이터:', result);
+} else {
+  console.log('사용자가 취소했습니다');
+}
+```
+
+### ♿ 완전한 접근성 지원
+- **키보드 내비게이션**: Tab/Shift+Tab으로 완전한 키보드 조작
+- **포커스 관리**: 모달 열림/닫힘 시 자동 포커스 이동
+- **ARIA 속성**: `aria-modal`, `aria-labelledby`, `aria-describedby` 완벽 지원
+- **스크린리더**: 실시간 상태 알림 및 오류 메시지 전달
+- **애니메이션 접근성**: `prefers-reduced-motion` 지원
+
+### 🎯 핵심 기능
+- ✅ ESC 키 및 배경 클릭으로 모달 닫기
+- ✅ 배경 스크롤 방지
+- ✅ 폼 유효성 검증 (이메일, GitHub URL 등)
+- ✅ 중복 모달 열기 방지
+- ✅ TypeScript 완전 타입 안전성
 
 ## 🛠 기술 스택
 
+- **React** - 컴포넌트 기반 UI
+- **TypeScript** - 타입 안전성
+- **React Hook Form** - 폼 상태 관리
+- **Zod** - 스키마 유효성 검증
+- **Tailwind CSS** - 스타일링
+
+## 🚀 실행 방법
+
+```bash
+# 의존성 설치
+pnpm install
+
+# 개발 서버 실행
+pnpm dev
+```
+
+## 📁 프로젝트 구조
+
+```
+src/
+├── hooks/useModal.ts          # 선언적 모달 API 훅
+├── utils/modalApi.ts          # 전역 모달 유틸리티
+├── components/
+│   ├── Modal.tsx              # 접근성 모달 컴포넌트
+│   ├── ApplicationForm.tsx    # 폼 컴포넌트
+│   └── ui/                    # 기본 UI 컴포넌트들
+├── types.ts                   # TypeScript 타입 정의
+└── ModalFormPage.tsx          # 메인 페이지
+```
+
+## 💡 사용 예시
+
+### 선언적 API (권장)
+```typescript
+import { useModal } from './hooks/useModal';
+
+const { openFormModal } = useModal();
+
+const handleClick = async () => {
+  try {
+    const result = await openFormModal();
+    if (result) {
+      alert(`안녕하세요 ${result.name}님!`);
+    }
+  } catch (error) {
+    console.error('모달 오류:', error);
+  }
+};
+```
+
+### 명령적 API
+```typescript
+const { openModal, closeModal } = useModal();
+
+const handleClick = () => {
+  openModal(buttonElement);
+};
+```
+
+## 🎯 구현 완료 사항
+
+- [x] **모달 닫기**: ESC 키, 배경 클릭 지원
+- [x] **포커스 흐름**: 자동 포커스 이동 및 복원
+- [x] **폼 사용성**: 키보드 전용 조작 가능
+- [x] **유효성 검증**: 실시간 오류 메시지 및 스크린리더 알림
+- [x] **UI/UX**: 배경 스크롤 방지, 내부 스크롤 지원
+- [x] **접근성**: ARIA 속성, 애니메이션 접근성 완벽 지원
+- [x] **선언적 호출**: Promise 기반 선언적 API 완전 구현
+
 ---
 
-코드 챌린지는 다음 필수 기술 스택을 포함하여 구현해야 해요.
-UI 라이브러리나 다른 유틸리티 라이브러리 등 추가 기술 스택을 함께 사용하셔도 돼요.
-
-- React
-- TypeScript
-
-## 🎯 챌린지 목표
-
-- 프로젝트는 `npm run dev` || `yarn dev` || `pnpm dev`로 실행 가능해요.
-- 코드의 구현은 `ModalFormPage.tsx` 파일에서부터 진행해주세요. 구조의 변경이 필요한 경우 자유롭게 진행해주셔도 돼요.
-
----
-
-### 구현 요구사항
-
-- **모달 닫기**
-  - ESC 키 입력 또는 바깥 영역(overlay) 클릭 시 모달이 닫혀야 해요.
-- **포커스 흐름**
-  - 모달이 열리면 모달의 제목 요소로 포커스가 이동해야 하고, 닫히면 원래 버튼(트리거)으로 포커스가 돌아와야 해요.
-  - Tab 키로 다음 요소로, Shift+Tab 키로 이전 요소로 이동할 수 있어야 해요.
-- **폼 사용성**
-  - 키보드만으로 입력하고 제출할 수 있어야 해요.
-  - 제출 시 유효성 검증이 실패하면 오류 메시지가 표시되고, 스크린리더 사용자에게 즉시 전달되어야 해요
-    - 검증을 위해 이메일 등 최소 한 개 이상의 필드에 유효성 검사가 포함되어야 해요.
-- **UI/UX**
-  - 모달이 열려 있을 때는 배경이 스크롤되지 않도록 막아야 해요.
-  - 모달 안의 내용이 길어지면 내부에서 스크롤할 수 있어야 해요.
-- **접근성**
-  - `aria-modal`, `aria-labelledby`, `aria-describedby` 같은 기본 속성을 챙겨주세요.
-  - 애니메이션은 `prefers-reduced-motion` 설정을 고려해 주면 더 좋아요.
-- **선언적 호출**
-  - 모달은 함수 호출을 통해 선언적으로 열 수 있어야 해요.
-    - 예시로 `const result = await openFormModal()` 형태로 사용 가능해야 하며,
-    - 제출 완료 시 입력값이 반환되고, 취소/닫기 시 `null`이 반환되어야 해요.
-
-## ⏱ 예상 소요 시간
-
----
-
-2시간
+> **개발 시간**: 약 2시간  
+> **접근성 테스트**: 키보드, 스크린리더 완료
