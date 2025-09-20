@@ -1,4 +1,4 @@
-import { type ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import { tv } from 'tailwind-variants';
 
 const button = tv({

@@ -19,13 +19,13 @@ export const formSchema = z.object({
       (val) => {
         if (!val || val.trim() === '') return true; // 빈 값은 허용
         return /^https:\/\/github\.com\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_.-]+)*\/?$/.test(
-          val,
+          val
         );
       },
       {
         message:
           '올바른 GitHub URL 형식이 아닙니다 (예: https://github.com/username)',
-      },
+      }
     )
     .refine(
       (val) => {
@@ -39,7 +39,7 @@ export const formSchema = z.object({
       },
       {
         message: '올바른 URL 형식이 아닙니다',
-      },
+      }
     ),
 });
 
