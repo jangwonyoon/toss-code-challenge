@@ -1,0 +1,22 @@
+{
+  "name": "accessibility-friendly-modal-form",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "check": "biome check"
+  },
+  "dependencies": {
+    "modern-normalize": "^3.0.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.2",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "typescript": "~5.8.3",
+    "vite": "^7.1.2"
+  }
+}
